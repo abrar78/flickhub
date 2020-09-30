@@ -1,0 +1,51 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-image: url({% static 'image/pop7.png' %});
+        height:100vh;
+background-size:cover;
+background-position:center;
+      }
+      p  {
+        margin: 5px;
+      }
+      input[type=password], input[type=text] ,input[type=email],input[type=number]{
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 30px;
+}
+      .btn-primary{
+  margin-right:10px; 
+  margin-top:18px;
+  margin-left: 350px;
+  background-color: #0078ff;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #0078ff;
+  border-radius: 6px;
+  font-size: 15px;
+}
+    </style>
+  </head>
+  <body>
+    <div style="background-color: whitesmoke; float: right; margin-top: 100px; height: 500px;">
+  
+<h2>Sign up</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  
+  <button class = "btn-primary" type="submit">Sign up</button>
+</form>
+</div>
+</body>
+</html>

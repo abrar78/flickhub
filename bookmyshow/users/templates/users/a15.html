@@ -1,0 +1,229 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Article 15 Movie(2019)</title>
+        <link rel = "icon" href = "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/de/b5/f7/deb5f760-e29b-80a0-dd0a-31cb08fa1bdf/AppIcon-1x_U007emarketing-85-220-6.jpeg/246x0w.jpg" width="100" type="image/x-icon">
+<meta name="viewport" content="width=120px, initial-scale=1">
+<meta charset="utf-8">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        
+        /* Create three equal columns that floats next to each other */
+        .column {
+          float:left;
+          padding: 10px;
+          height: 120px;
+         
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        .topnav {
+          overflow: hidden;
+          background-color: #333545;
+        }
+        /* Navbar links */
+        .topnav a {
+          float: left;
+          color: white;
+          text-align: center;
+          padding: 8px 10px;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          margin-left:-10px;
+        }
+        .pic2_style {
+            height: 370px;
+            width : 100%;
+        }
+        .bottom-left {
+           position: absolute;
+           top:300px;
+           left:280px;
+           color:white;
+           font-size:1cm;
+           font-weight:600;
+        }
+        .bottom-left2 {
+           position: absolute;
+           top:370px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.5cm;
+        }
+        .bottom-left3{
+           position: absolute;
+           top:430px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.3cm;
+     }
+     .bottom-left4{
+           position: absolute;
+           top:445px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.3cm;
+     }
+     .pic_style {
+          position:absolute;
+          top:310px;
+          left:20px;
+          height:320px;
+          width:40;
+        }
+        .book {
+     position: absolute;
+	  top: 75%;
+	  left: 80%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: #0078ff;
+	  color: white;
+	  font-size: 12px;
+	  padding: 18px 85px 18px 85px;
+	  border: none;
+                  border-radius:3px;
+	  cursor: pointer;
+	  text-align: center;
+}
+.container .btn {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: transparent;
+      border: none;
+	  padding: 12px 24px;
+	  
+	  cursor: pointer;
+	  
+	}
+    .img {
+  height:80px;
+  width:80px;
+  border-radius:100%;
+}
+.tag {
+         margin-top:6%;
+         margin-right:25%;
+         height:70px;
+         width:240px;
+}
+.column {
+  float: left;
+  width: 31.33%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.btn-primary{
+  margin-right:10px; 
+  margin-top:18px;
+  background-color: #0078ff;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #0078ff;
+  border-radius: 6px;
+  font-size: 15px;
+}
+.close  {
+  margin-left: 800px;
+}
+</style>
+</head>
+    <body>
+            <div class="row" style="background-color:#333545;width:100%;">
+                    <div class="column" style="width:15%">
+                      <img src="{% static 'image/logo3.png' %}" width="140px" height="50px" style="margin-left:80px; margin-top:15px;"  >
+                    </div>
+                    <div class="column" style="width:55%;">
+                       <input onclick = "window.location.href='{% url 'search' %}?next={{request.path}}'" type="text" placeholder="  Search Movies,Plays,Events, Sports and Activities" style="margin-top:12px; 
+                              margin-right:0px; width:820px; height:50px;border-color:#333545;border-radius:5px 5px 5px 5px; align:center">      
+                       <div class="topnav">
+                         <a href="#">Movies</a>
+                         <a href="#">Plays</a>
+                         <a href="#">Events</a>
+                         <a href="#">Sports</a>
+                         <a href="#">Monuments</a>
+                         <a href="#">Activities</a>
+                       </div>
+                    </div>
+                    
+<div class="column" style="width: 30%;">
+    {% if user.is_authenticated %}
+          <button type="button" onclick="window.location.href='{% url 'logout' %}'"; class="btn-primary">Logout</button> 
+  {% else %}
+
+     <button type="button" onclick="window.location.href='{% url 'SignUpView' %}'"; class="btn-primary">Sign Up</button> 
+     <button type="button" onclick="window.location.href='{% url 'login' %}?next={{request.path}}'"; class="btn-primary">Log In</button>
+   
+{% endif %}
+</div>
+            </div>
+            <div>	
+                    <img class="pic2_style" src="{% static 'image/15back.png' %}" >
+                    </div>
+                    <div class="down">
+                    <img src="https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/article-15-et00098456-11-03-2019-04-28-43.jpg" class="pic_style">
+                    <p class="bottom-left">Article 15</p>
+<p class="bottom-left2">Hindi</p>
+<p class="bottom-left3">Released: 28 Jun, 2019 </p>
+<p class="bottom-left4">Time:2 hrs 11 mins </p>
+                    <img src="{% static 'image/15rate.png' %}" style="margin-left:300px; width:370px;">
+                    <button class="book"onclick="window.location.href='{%url 'a15_tickets'%}' "><b>BOOK TICKETS</b></button>
+                    </div>
+                    <div class="container">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><img src="{% static 'image/play.jpg' %}" style="height: 80px; width: 80px;"></button>
+                          <div class="modal fade" id="myModal" role="dialog"style="margin-top:120px;margin-right:202px;">
+                              <div class="modal-dialog">
+                              <div class="modal-body ">
+                          <button type="button" class="close" style="align:center"data-dismiss="modal">&times;</button>          
+                          <iframe width="800" height="470" src="https://www.youtube.com/embed/HKOJY0cU63E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div></div></div></div>
+                    <br><br><br>
+                    <div class="row">
+                        <div class="column" style="background-color:#F8F9F9;margin-left:10px;margin-right:10px;">
+                          <h3 style="text-align:center">Cast</h3>
+                           <p><img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/ayushmann-khurrana-29002-24-03-2017-17-31-49.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/isha-talwar-14774-24-03-2017-14-08-54.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/sayani-gupta-29115-24-03-2017-16-00-55.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/kumud-mishra-1238-23-10-2017-03-06-51.jpg"></p>  
+                           <p>Aushman&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IshaTalwar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SayaniGupta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kumud</p>
+                      <p style="fontsize:13px;">Actor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor</p>
+                        </div>
+                        <div class="column" style="background-color:#F8F9F9;margin-left:10px;margin-right:10px;">
+                          <h3 style="text-align:center">Synopsis</h3>
+                          <p>In the rural heartlands of India, an upright police officer sets out on a crusade against violent caste-based crimes and discrimination. Inspired by true events and directed by Anubhav Sinha, Article 15 stars Ayushmann Khurrana and Isha Talwar in the lead roles.</p>
+                        </div>
+                        <div class="column" style="background-color:#F8F9F9;margin-left:10px;">
+                          <h3 style="text-align:center;">Crew</h3>
+                           <p><img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/anubhav-sinha-209-24-03-2017-14-06-30.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/gaurav-solanki-iein037573-11-06-2019-15-58-37.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/anurag-saikia-1074803-15-01-2018-05-08-01.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/mangesh-dhakde-1045393-24-07-2017-15-10-09.jpg"></p>  
+                           <p>AnubhavSinha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GauravSolanki&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AnuragSaikia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MangeshDhakde</p>
+                      <p style="fontsize:13px;">Director&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;musician&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background</p>
+                        </div>
+                      </div>
+        
+
+    </body>
+</html>

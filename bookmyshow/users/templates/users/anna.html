@@ -1,0 +1,224 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Annabelle Comes Home Movie(2019)</title>
+        <link rel = "icon" href = "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/de/b5/f7/deb5f760-e29b-80a0-dd0a-31cb08fa1bdf/AppIcon-1x_U007emarketing-85-220-6.jpeg/246x0w.jpg" width="100" type="image/x-icon">
+<meta name="viewport" content="width=120px, initial-scale=1">
+<meta charset="utf-8">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        
+        /* Create three equal columns that floats next to each other */
+        .column {
+          float:left;
+          padding: 10px;
+          height: 120px;
+         
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        .topnav {
+          overflow: hidden;
+          background-color: #333545;
+        }
+        /* Navbar links */
+        .topnav a {
+          float: left;
+          color: white;
+          text-align: center;
+          padding: 8px 10px;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          margin-left:-10px;
+        }
+        .pic2_style {
+            height: 370px;
+            width : 100%;
+        }
+        .bottom-left {
+           position: absolute;
+           top:300px;
+           left:280px;
+           color:white;
+           font-size:1cm;
+           font-weight:600;
+        }
+        .bottom-left2 {
+           position: absolute;
+           top:370px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.5cm;
+        }
+        .bottom-left3{
+           position: absolute;
+           top:430px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.3cm;
+     }.bottom-left4{
+           position: absolute;
+           top:445px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.3cm;
+     }
+     .pic_style {
+          position:absolute;
+          top:310px;
+          left:20px;
+          height:320px;
+          width:230px;
+        }
+        .book {
+     position: absolute;
+	  top: 75%;
+	  left: 80%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: #0078ff;
+	  color: white;
+	  font-size: 12px;
+	  padding: 18px 85px 18px 85px;
+	  border: none;
+                  border-radius:3px;
+	  cursor: pointer;
+	  text-align: center;
+}
+.container .btn {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: transparent;
+      border: none;
+	  padding: 12px 24px;
+    cursor: pointer;
+	  
+	}
+    .img {
+  height:80px;
+  width:80px;
+  border-radius:100%;
+}
+tag {
+         margin-top:6%;
+         margin-right:25%;
+         height:70px;
+         width:240px;
+}
+.column {
+  float: left;
+  width: 31.33%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.btn-primary{
+  margin-right:10px; 
+  margin-top:18px;
+  background-color: #0078ff;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #0078ff;
+  border-radius: 6px;
+  font-size: 15px;
+}
+</style>
+</head>
+    <body>
+            <div class="row" style="background-color:#333545;width:100%;">
+                    <div class="column" style="width:15%">
+                      <img src="{% static 'image/logo3.png' %}" width="140px" height="50px" style="margin-left:80px; margin-top:15px;"  >
+                    </div>
+                    <div class="column" style="width:55%;">
+                       <input onclick = "window.location.href='{% url 'search' %}?next={{request.path}}'" type="text" placeholder="  Search Movies,Plays,Events, Sports and Activities" style="margin-top:12px; 
+                              margin-right:200px; width:820px; height:50px;border-color:#333545;border-radius:5px 5px 5px 5px; align:center">
+                       <div class="topnav">
+                         <a href="#">Movies</a>
+                         <a href="#">Plays</a>
+                         <a href="#">Events</a>
+                         <a href="#">Sports</a>
+                         <a href="#">Monuments</a>
+                         <a href="#">Activities</a>
+                         
+                       </div>
+                    </div>
+                    <div class="column" style="width: 30%;">
+                      {% if user.is_authenticated %}
+                            <button type="button" onclick="window.location.href='{% url 'logout' %}'"; class="btn-primary">Logout</button> 
+                    {% else %}
+                  
+                       <button type="button" onclick="window.location.href='{% url 'SignUpView' %}'"; class="btn-primary">Sign Up</button> 
+                       <button type="button" onclick="window.location.href='{% url 'login' %}?next={{request.path}}'"; class="btn-primary">Log In</button>
+                     
+                  {% endif %}
+                  </div>
+            </div>
+            <div>	
+                    <img class="pic2_style" src="{% static 'image/annaback.png' %}" >
+                    </div>
+                    <div class="down">
+                    <img src="{% static 'image/annaposter.jpg' %}" class="pic_style">
+                    <p class="bottom-left">Annabelle Comes Home</p>
+<p class="bottom-left2">English </p>
+<p class="bottom-left3">Released: 27 Jun, 2019 </p>
+<p class="bottom-left4">Time:1 hrs 46mins </p>
+                    <img src="{% static 'image/annarate.png' %}" style="margin-left:300px; width:370px;">
+                    <button class="book"onclick="window.location.href='{% url 'anna_tickets'%}' "><b>BOOK TICKETS</b></button>
+                    </div>
+                    <div class="container">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><img src="{% static 'image/play.jpg' %}" style="height: 80px; width: 80px;"></button>
+                          <div class="modal fade" id="myModal" role="dialog"style="margin-top:120px;margin-right:202px;">
+                              <div class="modal-dialog">
+                              <div class="modal-body ">
+                          <button type="button" class="close" style="align:center"data-dismiss="modal">&times;</button>          
+                          <iframe width="800" height="470" src="https://youtu.be/bCxm7cTpBAs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div></div></div></div>
+                    <br><br><br>
+                    <div class="row">
+                        <div class="column" style="background-color:#F8F9F9;margin-left:10px;margin-right:10px;">
+                          <h3 style="text-align:center">Cast</h3>
+                           <p><img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/mckenna-grace-1065958-01-05-2017-13-43-47.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/madison-iseman-1268765-21-06-2019-02-32-58.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/katie-sarife-1268766-21-06-2019-02-36-58.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/patrick-wilson-4422-24-03-2017-12-35-32.jpg"></p>  
+                           <p>MckennaGrace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Madison&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KaiteSarife&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PatrickWilson</p>
+                      <p style="fontsize:13px;">Actor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor</p>
+                        </div>
+                        <div class="column" style="background-color:#F8F9F9;margin-left:10px;margin-right:10px;">
+                          <h3 style="text-align:center">Synopsis</h3>
+                          <p>Paranormal investigators Ed and Lorraine Warren keep a possessed doll locked up in an artifacts room in their house. When the doll awakens the room`s evil spirits, it soon becomes a night of terror for the couple`s young daughter and her friends.</p>
+                        </div>
+                        <div class="column" style="background-color:#F8F9F9;margin-left:10px;">
+                          <h3 style="text-align:center;">Crew</h3>
+                           <p><img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/gary-dauberman-1048634-24-03-2017-16-12-22.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/james-wan-36022-24-03-2017-16-04-54.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/peter-safran-iein073329-24-03-2017-16-31-24.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/joseph-bishara-1048636-24-03-2017-16-12-22.jpg"></p>  
+                           <p>GaryDauberman&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JamesWan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PeterSafran&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Joseph</p>
+                      <p style="fontsize:13px;">Director&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Producer&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;Producer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Musician</p>
+                        </div>
+                      </div>
+
+
+
+
+

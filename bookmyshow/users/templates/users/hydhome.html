@@ -1,0 +1,325 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+ <title>{% block title %}Movie Tickets, Plays, Sports, Events & Cinemas near   Hyderabad - BookMyShow {% endblock %}</title>
+    <link rel = "icon" href = "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/de/b5/f7/deb5f760-e29b-80a0-dd0a-31cb08fa1bdf/AppIcon-1x_U007emarketing-85-220-6.jpeg/246x0w.jpg" width="100" type="image/x-icon">
+<meta name="viewport" content="width=120px, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#myModal").modal('show');
+  });
+  
+</script>
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float:left;
+  padding: 10px;
+  height: 120px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333545;
+}
+/* Navbar links */
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 8px 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left:-10px;
+}
+.topnav1 {
+  overflow: hidden;
+  background-color:#f2f2f2;
+}
+
+.topnav1 a {
+  float: left;
+  color:DarkGrey;
+  text-align: center;
+  
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav1 a:hover {
+  background-color: LightGrey;
+  color:DodgerBlue;
+}
+.container {
+  position:relative;
+  width:100%;
+  height:280px;
+}
+
+.container img {
+  width:100%;
+  height:280px;
+}
+
+.container .btn {
+  position: absolute;
+  top: 90%;
+  left: 36.4%;
+  height:37px;
+  width:140px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color:#F30F46;
+  color: white;
+  font-size: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-align: center;
+}
+.container .btn1 {
+  position: absolute;
+  top: 90.4%;
+  left: 9.7%;
+  height:35px;
+  width:140px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #F30F46;
+  color: white;
+  font-size: 12px;
+  padding: 12px 24px;
+  border:0px;
+  cursor: pointer;
+  text-align: center;
+}
+.container .btn2 {
+  position: absolute;
+  top: 90%;
+  right: 28.5%;
+  height:37px;
+  width:140px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color:#F30F46;
+  color: white;
+  font-size: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border:0px;
+  text-align: center;
+}
+.container .btn3 {
+  position: absolute;
+  top: 90%;
+  left: 62%;
+  height:37px;
+  width:140px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color:#F30F46;
+  color: white;
+  font-size: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border:0px;
+  text-align: center;
+}
+.container .btn4 {
+  position: absolute;
+  top: 90%;
+  right: 3%;
+  height:37px;
+  width:140px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color:#F30F46;
+  color: white;
+  font-size: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border:0px;
+  text-align: center;
+}
+.container .btn5 {
+  position: absolute;
+  top: 90%;
+  left: 12%;
+  height:37px;
+  width:140px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color:#F30F46;
+  color: white;
+  font-size: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border:0px;
+  text-align: center;
+}
+.btn-primary{
+  margin-right:10px; 
+  margin-top:18px;
+  background-color: #0078ff;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #0078ff;
+  border-radius: 6px;
+  font-size: 15px;
+}
+a{
+  color: whitesmoke;
+  font-size: 15px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="row" style="background-color:#333545;width:100%;">
+  <div class="column" style="width:15%">
+    <img src="{% static 'image/logo3.png' %}" width="140px" height="50px" style="margin-left:80px; margin-top:15px;"  >
+  </div>
+  <div class="column" style="width:65%;">
+     <input onclick = "window.location.href='{% url 'search' %}?next={{request.path}}'" type="text" placeholder="  Search Movies,Plays,Events, Sports and Activities" style="margin-top:12px; 
+            margin-right:200px; width:930px; height:50px;border-color:#333545;border-radius:5px 5px 5px 5px; align:center">
+     <div class="topnav">
+       <a href="#">Movies</a>
+       <a href="#">Plays</a>
+       <a href="#">Events</a>
+       <a href="#">Sports</a>
+       <a href="#">Monuments</a>
+       <a href="#">Activities</a>
+       <a style ="padding-left: 450px;color: grey"href="{% url 'city' %}">Hyderabad</a>
+     </div>
+  </div>
+  {% if user.is_authenticated %}
+<div class="column">
+          <button type="button" onclick="window.location.href='{% url 'logout' %}'"; class="btn-primary">Logout</button> 
+   </div>
+{% else %}
+<div class="column">
+     <button type="button" onclick="window.location.href='{% url 'SignUpView' %}'"; class="btn-primary">Sign Up</button> 
+     <button type="button" onclick="window.location.href='{% url 'login' %}'"; class="btn-primary">Log In</button>
+   </div>
+{% endif %}
+  </div>
+<div class="container" style="width:100%;margin-top:30px;">
+  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <div class="container">
+            <img src="{% static 'image/11.png' %}"  style="width:100%">
+            <button class="btn" onclick="a15()" ><a href="{% url 'a15' %}">Book Now</a></button>
+            <button class="btn1"  onclick="toystory()"><a href="{% url 'toystory' %}">Book Now</a></button>
+            </div>
+      </div>
+
+      <div class="item">
+        <div class="container">
+            <img src="{% static 'image/13.png' %}"  style="width:100%">
+            <button class="btn3"   onclick="toystory"> <a href = "{% url 'toystory' %}">Book Now</a> </button>  
+            <button class="btn4"    onclick="a15()">  <a href = "{% url 'a15' %}">Book Now</a>   </button>
+            <button class="btn5"    onclick="kabir">  <a href = "{% url 'kabir' %}">Book Now</a></button>   
+            </div>
+      </div>
+    
+      <div class="item">
+        <div class="container">
+            <img src="{% static 'image/12.png' %}" style="width:100%">
+            <button class="btn2"    onclick="kabir">  <a href = "{% url 'kabir' %}">Book Now</a> </button>  
+          </div>
+      </div>
+    </div>
+    
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<div style="background-color:#f2f2f2;">
+<div class="row">
+<div class="topnav1">
+  <a href="{% url 'hyd' %}" style="margin-left:150px;">Movies</a>
+  <a href="#news">Now Showing</a>
+  <a href="#contact">Coming Soon</a>
+  <a href="#about">Exclusive</a>
+</div>
+</div>
+<div class="row" style="background-color:#f2f2f2;>
+  <div class="column">
+       <div>
+          &nbsp&nbsp&nbsp&nbsp
+            
+            <a onclick="ohbaby()" href="{% url 'ohbaby' %}"> <img src="{% static 'image/64.png' %}"  style="height:450px;margin-left:450px;margin-top:0px;border-radius:4px 4px 4px 4px;"></a>&nbsp&nbsp&nbsp&nbsp&nbsp
+              <a onclick="a15()" href="{% url 'a15' %}"><img src="{% static 'image/66.png' %}"  style="height:450px;margin-top:0px;border-radius:4px 4px 4px 4px;"></a>&nbsp&nbsp&nbsp&nbsp&nbsp
+                 <a onclick="toystory()" href="{% url 'toystory' %}"><img src="{% static 'image/67.png' %}"  style="height:450px;margin-top:0px;border-radius:4px 4px 4px 4px;"></a><br>
+             &nbsp&nbsp&nbsp&nbsp  <a onclick="bro()" href="{% url 'bro' %}"> <img src="{% static 'image/62.png' %}"  style="height:450px;margin-left:450px;margin-top:0px;border-radius:4px 4px 4px 4px;"></a>&nbsp&nbsp&nbsp&nbsp&nbsp
+             <a onclick="kabir()" href="{% url 'kabir' %}"><img src="{% static 'image/63.png' %}"  style="height:450px;margin-top:0px;border-radius:4px 4px 4px 4px;"></a>&nbsp&nbsp&nbsp&nbsp&nbsp
+              <a onclick="anna()" href="{% url 'anna' %}"><img src="{% static 'image/65.png' %}"  style="height:450px;margin-top:0px;border-radius:4px 4px 4px 4px;"></a>   <br>
+   </div>
+</div>
+</div>
+<script>
+  function ohbaby() {
+    sessionStorage.setItem("date","27th Sat,2019");
+  sessionStorage.setItem("movie","Oh! Baby");
+  }
+  function kabir() {
+    sessionStorage.setItem("date","27th Sat,2019");
+sessionStorage.setItem("movie","Kabir Singh");
+}
+function bro() {
+  sessionStorage.setItem("date","27th Sat,2019");
+sessionStorage.setItem("movie","Brochevarevaru Ra");
+}
+function anna() {
+  sessionStorage.setItem("date","27th Sat,2019");
+sessionStorage.setItem("movie","AnnaBelle Comes Home");
+}
+function toystory() {
+  sessionStorage.setItem("date","27th Sat,2019");
+sessionStorage.setItem("movie","Toy Story 4");
+}
+function a15() {
+  sessionStorage.setItem("date","27th Sat,2019");
+sessionStorage.setItem("movie","Article 15");
+}
+</script>
+</body>
+</html>

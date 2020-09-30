@@ -1,0 +1,195 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#myModal").modal('show');
+    });
+  </script>
+<style>
+.box{
+  width:1000px;
+  position: fixed;
+  z-index: 1;
+  top: 120px;
+  left: 100px;
+  background:#D4EFDF;
+  overflow-x: hidden;
+  padding: 8px 0;
+  height:70px; 
+margin-left: 100px;
+}
+  
+.sidenav1 {
+  width: 950px;
+  position: fixed;
+  z-index: 1;
+  top: 220px;
+  left: 100px;
+  background:white;
+  overflow-x: hidden;
+  padding: 8px 0;
+  height:320px;
+  margin-left: 100px;
+}
+
+.pay{ 
+   margin-top:60px;
+    background-color: #fffcdc;
+    padding: 5px 15px;
+    min-height: 5px;
+    font-size:19px;
+   margin-left:15px;
+   height: 60px;
+}
+.log {
+  margin-left:1000px; 
+  margin-top:18px;
+  background-color: #0078ff;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #0078ff;
+  border-radius: 6px;
+  font-size: 15px;}
+}
+</style>
+</head>
+<body style="background-color:#eee;">
+  <script>
+  function sendMessage(){
+	var message = "Dear Customer,your booking for  "+sessionStorage.getItem("movie")+" at "+sessionStorage.getItem("time")+","+sessionStorage.getItem("date")+" in "+sessionStorage.getItem("theater")+" has successfully been booked."+"\n"+"SEATS "+sessionStorage.getItem("seatPosition")+"\n" +"Please arrive 20 minutes before to pay and collect your tickets.";
+	var options = {
+		"twilioAccSid": "ACeadaf54163b7babaa090b588cb0b8f9a",
+		"twilioAccToken": "55dac9179eb922e86df132399cba8ac9",
+		"toNr": "whatsapp:+919110362982",
+		"fromNr": "whatsapp:+14155238886"
+	};
+
+	var http = new XMLHttpRequest();
+	var url = "https://api.twilio.com/2010-04-01/Accounts/ACeadaf54163b7babaa090b588cb0b8f9a/Messages.json";
+	var params = "To=whatsapp%3A%2B919110362982&From=whatsapp%3A%2B14155238886&Body=" + encodeURI(message);
+
+	console.log("Url: " + url);
+	console.log("Parameters: " + params);
+
+	http.open("POST", url, true);
+	http.setRequestHeader("Authorization", "Basic " + btoa(options.twilioAccSid + ":" + options.twilioAccToken));
+	http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+	http.onreadystatechange = function() {
+		console.log("ReadyState: " + http.readyState + " - Status:" + http.status);
+	}
+	http.send(params);
+}
+</script>
+  </script>
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Your Booking has been confirmed!</h4>
+            </div>
+            <div class="modal-body">
+				<p>Please come before 20 minutes to pay and collect your ticket<br>Your Booking Details have been sent to your phone WhatsApp.</p>
+                
+                    <button type="submit" onclick="sendMessage()" class="btn btn-primary"data-dismiss="modal" style="margin-left:250px;">OK</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+     
+        <div class = "header" style = "height:80px;padding: 9px 0 9px 30px;background: #333545;min-width: 320px;">
+                <img src="{% static 'image/logo3.png' %}" style ="margin-left:110px; margin-top:7px">
+                <button onclick="window.location.href = '{% url 'logout' %}'"; class = "log">LogOut</button>
+                </div>
+<div class = "box">
+	<div class = "txt" >
+	<h3 style = "color:#49ba8e;margin-top:5px"><img src = "{% static 'image/tick1.png' %}" style = "height:50px;margin-left:15px;margin-top:-15px">Thank you for your Booking!</h3></div>  </div>
+
+  <div class="sidenav1">
+ 
+   <div style = "margin-left: 280px;font-weight:16px;font-size:18px;margin-top:10px;">
+      <div id = "demo" style = "float:left;margin-left: -250px;margin-top:20px;"></div>
+     <br><div id="r3" style="margin-left : 0px; margin-top:-25px;font-weight: 300"></b></div> <br>
+     <img src = "{% static 'image/theatre.png' %}" style="margin-left:-30px; margin-top: -7px;"><div id = "r9" style="margin-left : 0px; margin-top:-25px; font-size:15px; color:gray;"></div><br>
+     <div id="r4" style="margin-left : 0px;margin-top:-25px; font-size:15px; color:gray;"></div><div id = "day" style="font-size: 15px;color :gray;"></div>
+     <div  style = "font-size:17px;margin-top:0px; margin-left:0px;">Quantity:</div><div id="r2"  style="margin-left : 100px; margin-top:-25px;"></div>
+    <div style="color:darkgreen; margin-top:10px;margin-left:-30px; font-weight: 5px;"><img src="{% static 'image/seat.png' %}"><b>SEATS POSITION:</b></div><b><div id="result" style="margin-left : 180px; margin-top:-30px; color:darkgreen;"></div></b><br>
+        
+
+  </div>      
+    
+  <div class="pay" style="margin-top:20px; width:75%; margin-left:200px;"><div style="margin-left:5px; font-size:20px; ">AMOUNT PAID</div><b><div id = "total" style = "color: black;margin-top: -25px;font-size: 19px;margin-left: 175px; float:right;"></div></b></div>
+  <script>
+
+function myFunction() {
+
+
+
+var img = document.createElement("img");
+if ( $(sessionStorage.getItem("movie")=="Article 15")) {
+  img.src = "{% static 'image/66.png' %}";
+  img.width = 150;
+  img.height = 220;
+  
+  document.getElementById("demo").appendChild(img);
+}
+if ( $(sessionStorage.getItem("movie")=="Kabir Singh")) {
+  img.src = "{% static 'image/63.png' %}";
+  img.width = 150;
+  img.height = 220;
+  
+  document.getElementById("demo").appendChild(img);
+}
+if ( $(sessionStorage.getItem("movie")=="AnnaBelle Comes Home")) {
+  img.src = "{% static 'image/annaposter.jpg' %}";
+  img.width = 150;
+  img.height = 220;
+  
+  document.getElementById("demo").appendChild(img);
+}
+if ( $(sessionStorage.getItem("movie")=="Brochevarevaru Ra")) {
+  img.src = "{% static 'image/broposter.jpg' %}";
+  img.width = 150;
+  img.height = 220;
+  
+  document.getElementById("demo").appendChild(img);
+}
+
+if ( $(sessionStorage.getItem("movie")=="Toy Story 4")) {
+  img.src = "{% static 'image/67.png' %}";
+  img.width = 150;
+  img.height = 220;
+  
+  document.getElementById("demo").appendChild(img);
+}
+if ( $(sessionStorage.getItem("movie")=="Oh! Baby")) {
+  img.src = "{% static 'image/64.png' %}";
+  img.width = 150;
+  img.height = 220;
+  
+  document.getElementById("demo").appendChild(img);
+}
+}
+
+myFunction();
+                      document.getElementById("result").innerHTML = sessionStorage.getItem("seatPosition");
+                      document.getElementById("r2").innerHTML = sessionStorage.getItem("num");
+                      document.getElementById("r3").innerHTML = sessionStorage.getItem("movie");
+                      document.getElementById("r4").innerHTML = sessionStorage.getItem("time");
+                      document.getElementById("day").innerHTML = sessionStorage.getItem("date");
+                      document.getElementById("total").innerHTML = (sessionStorage.getItem("c"))*300+(sessionStorage.getItem("num")-sessionStorage.getItem("c"))*150;            
+                      document.getElementById("r9").innerHTML = sessionStorage.getItem("theater");
+
+                      
+                      </script>
+</body>
+</html> 

@@ -1,0 +1,79 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Movie Tickets, Plays, Sports, Events & Cinemas</title>
+<link rel = "icon" href = "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/de/b5/f7/deb5f760-e29b-80a0-dd0a-31cb08fa1bdf/AppIcon-1x_U007emarketing-85-220-6.jpeg/246x0w.jpg" width="100" type="image/x-icon">
+<meta name="viewport" content="width=120px, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+		$('#myModal').modal({
+			backdrop: 'static'
+		});
+        $("#myModal").modal('show');
+});
+</script>
+<style>
+    ul{
+list-style-type: none;
+margin-left:-20px;
+margin-top: 25px;
+}
+ul li{
+display: inline-block;
+}
+ul li a{
+text-decoration: none;
+color:#1AFFDB;
+padding: 14px 16px;
+}
+ul li a:hover{
+background-color:#fff;
+color:#1A5EFF;
+}
+.main{
+max-width:1500px;
+margin-left: 100px;
+}
+.back {
+background-image:url({% static 'image/back1.png' %});
+height:100vh;
+background-size:cover;
+background-position:center;
+}
+.modal-title {
+    text-align: center;
+}
+.modal-dialog {
+    margin-top: 150px;
+}
+</style>
+
+</head>
+<body>
+    <div class="bs-example">
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                       
+                        <h4 class="modal-title">Popular Cities </h4>
+                    </div>
+                    <div class="modal-body">
+                <ul>
+                        <li><a href="{% url 'hyd' %}"> <img src="{% static 'image/hyd.png' %}"><figcaption style="font-size:10px; color:black; margin-left:30px;">Hyderabad</figcaption></a></li>
+                        <li><a href="{% url 'delhi' %}"> <img src="{% static 'image/delhi.png' %}"><figcaption style="font-size:10px;color:black;  margin-left:40px;">Delhi</figcaption></a></li>
+                        <li><a href="{% url 'bang' %}"> <img src="{% static 'image/bang.png' %}"><figcaption style="font-size:10px;color:black;  margin-left:45px">Banglore</figcaption></a></li>
+                </ul>
+                            </div>
+        </div>
+    </div>
+</div></div>
+</body>
+
+</html>

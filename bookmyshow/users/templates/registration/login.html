@@ -1,0 +1,71 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Login and Enjoy
+  </title>
+  <link rel = "icon" href = "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/de/b5/f7/deb5f760-e29b-80a0-dd0a-31cb08fa1bdf/AppIcon-1x_U007emarketing-85-220-6.jpeg/246x0w.jpg" width="100" type="image/x-icon">
+        <meta name="viewport" content="width=120px, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+input[type=text], select {
+  width: 15%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 30px;
+}
+input[type=password], select {
+  width: 15%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 30px;
+}
+.btn-primary{
+  margin-right:10px; 
+  margin-top:18px;
+  margin-left: 150px;
+  background-color :#00e600;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #00e600;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+</style>
+</head>
+<body>
+
+    <div>
+        <div style="float: left">
+                <img src="{% static 'image/popco.jpg' %}" style="width:850px;height:700px;">
+          </div>
+          <div style="margin-left:1000px;margin-top:-460px; width:400px; float: right;"></div>
+    <h2><br><br><br><br><br><br><br>Login</h2>
+<form method="post" style="margin-left: 70px">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button  class="btn-primary" type="submit">Login</button>
+</form>
+</div>
+</div>
+</body>
+</html>

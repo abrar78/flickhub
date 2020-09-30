@@ -1,0 +1,220 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+.pho {
+  background-color: whitesmoke;
+  border: #0078ff;
+  width: 30%;
+  padding: 18px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 65px;
+}
+.btn-primary{
+  margin-right:10px; 
+  margin-top:18px;
+  
+  background-color :#49ba8e;
+  height: 40px;
+  width: 250px;
+  color: whitesmoke;
+  border-color: #49ba8e;
+  border-radius: 6px;
+  font-size: 15px;
+}
+.btn-info{
+    margin-right:10px; 
+  margin-top:18px;
+  
+  background-color :#49ba8e;
+  height: 40px;
+  width: 200px;
+  color: whitesmoke;
+  border-color: #49ba8e;
+  border-radius: 6px;
+  font-size: 15px;
+}
+input[type=text] {
+  width: 40%;
+  padding: 15px;
+  margin-left:30px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  height:15px;
+}
+
+.main {
+  margin-left: 140px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.fa-caret-down {
+  float:left;
+  padding-right: 8px;
+}
+
+.circle-left{
+    display: inline-block;
+    position: absolute;
+    top: 46%;
+    z-index: 1;
+    width: 22px;
+    height: 22px;
+    margin-left:-12px;
+    background: #eeeeee;
+    border-radius: 50%;
+}
+.circle-right {
+    display: inline-block;
+    position: absolute;
+    top: 46%;
+    z-index: 1;
+    width: 22px;
+    height: 22px;
+    margin-left:603px;
+    background: #eeeeee;
+    border-radius: 50%;}
+
+.pay{
+    margin-top: 80px;
+    background-color: #fffcdc;
+    padding: 15px 15px;
+    min-height: 40px;
+    font-size:19px;
+}
+.log {
+  margin-left:950px; 
+  margin-top:18px;
+  background-color: #0078ff;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #0078ff;
+  border-radius: 6px;
+  font-size: 15px;
+}
+.left {
+  float: left;
+  width: 40%;
+  margin-left:55px;
+  background-color:white;
+  margin-top:35px;
+}
+.right {
+  float : right;
+  margin-right:40px;
+  width:40%;
+  background-color:white;
+  margin-top:35px;
+  
+}
+</style>
+</head>
+<body style="background-color:#eee">
+    <script>
+        var otp;
+        function sendOTP(){
+        otp = Math.floor(1000 + Math.random() * 9000);
+        
+        var options = {
+        "twilioAccSid": "ACeadaf54163b7babaa090b588cb0b8f9a",
+        "twilioAccToken": "55dac9179eb922e86df132399cba8ac9",
+        "toNr": "+919110362982",
+        "fromNr": "+12512946394"
+        };
+        
+        var http = new XMLHttpRequest();
+        var url = "https://api.twilio.com/2010-04-01/Accounts/ACeadaf54163b7babaa090b588cb0b8f9a/Messages.json";
+        var params = "To=" + encodeURI(options.toNr) + "&From=" + encodeURI(options.fromNr) + "&Body=" + encodeURI(otp);
+        
+        console.log("Url: " + url);
+        console.log("Parameters: " + params);
+        
+        http.open("POST", url, true);
+        http.setRequestHeader("Authorization", "Basic " + btoa(options.twilioAccSid + ":" + options.twilioAccToken));
+        http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        
+        http.onreadystatechange = function() {
+        console.log("ReadyState: " + http.readyState + " - Status:" + http.status);
+        }
+        http.send(params);
+        }
+        
+        function generate()  {
+            var x = document.getElementById("otpgenerate").value;
+            if(otp == x) {
+               window.location.href='{% url 'ticket' %}';
+            }
+            else {
+              window.location.href='{% url 'tickit' %}';
+              alert("Wrong otp!,Try Again");
+            }
+        }
+        </script>
+  <div class = "header" style = "height:80px;padding: 9px 0 9px 30px;background: #333545;min-width: 320px;">
+                <img src="{% static 'image/logo3.png' %}" style ="margin-left:110px; margin-top:7px">
+                <button onclick="window.location.href = '{% url 'logout' %}'"; class = "log">LogOut</button>
+                </div>
+<div class="left">
+    <center>
+        <div class="container" style = "margin-left:-300px;">
+		<h2 style = "text-align:center;font-size: 28px;font-weight: 300;letter-spacing: 2px;color: black;">Verification</h2>
+        <input type="text" class="pho"  placeholder="Enter your phone number" ><br><br>
+        
+        <button style = "background-color:#49ba8e;border-color:#49ba8e" onClick="sendOTP()"; type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Send OTP</button>
+        <div id="demo" class="collapse">
+            <br><br>
+        <input type="text" class = "pho" id="otpgenerate" placeholder="enter otp (Eg:1234)"><br><br>
+        
+        <button  style = "background-color:#49ba8e;border-color:#49ba8e;width:200px"  type="submit" class="btn-primary" onclick="generate()">Verify</button>
+        </div>
+        </div>
+        </center>
+        
+</div>
+  <div class="right"><h2 style="margin-left:30px;margin-top:10px;color:#c02c39">Booking Summary</h2>
+   <div style = "margin-left: 20px"> Movie Name: <div id="r3" style="margin-left:160px;margin-top:-20px;"></div> <br>
+     Number Of Tickets:<div id="r2" style="margin-left:170px;margin-top:-20px;"></div><br>
+    Seats Position: <div id="result" style="margin-left:170px;margin-top:-20px;"></div><br>
+    Time:<div id="r4" style="margin-left:170px;margin-top:-20px;"></div><br>    
+    Theater:<div id = "r9" style="margin-left: 170px;margin-top:-20px;"></div><hr>
+     </div>          
+    
+                          <span class = "circle-left"></span>
+                         <span class="circle-right"></span>
+                        <div class="pay">Amount Payable<div id = "total" style = "color: black;margin-top: -27px;font-size: 19px;margin-left: 175px"></div>
+        </div>
+                 <br>  
+    
+              
+
+                      <script>
+                      document.getElementById("result").innerHTML = sessionStorage.getItem("seatPosition");
+                      document.getElementById("r2").innerHTML = sessionStorage.getItem("num");
+                      document.getElementById("r3").innerHTML = sessionStorage.getItem("movie");
+                      document.getElementById("r4").innerHTML = sessionStorage.getItem("time");
+                      document.getElementById("total").innerHTML = (sessionStorage.getItem("c"))*300+(sessionStorage.getItem("num")-sessionStorage.getItem("c"))*150;  
+                      document.getElementById("r9").innerHTML = sessionStorage.getItem("theater");
+
+                      
+                      </script>
+</body>
+</html> 

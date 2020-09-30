@@ -1,0 +1,227 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kabir Singh Movie(2019)</title>
+        <link rel = "icon" href = "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/de/b5/f7/deb5f760-e29b-80a0-dd0a-31cb08fa1bdf/AppIcon-1x_U007emarketing-85-220-6.jpeg/246x0w.jpg" width="100" type="image/x-icon">
+<meta name="viewport" content="width=120px, initial-scale=1">
+<meta charset="utf-8">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        
+        /* Create three equal columns that floats next to each other */
+        .column {
+          float:left;
+          padding: 10px;
+          height: 120px;
+         
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        .topnav {
+          overflow: hidden;
+          background-color: #333545;
+        }
+        /* Navbar links */
+        .topnav a {
+          float: left;
+          color: white;
+          text-align: center;
+          padding: 8px 10px;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          margin-left:-10px;
+        }
+        .pic2_style {
+            height: 370px;
+            width : 100%;
+        }
+        .bottom-left {
+           position: absolute;
+           top:300px;
+           left:280px;
+           color:white;
+           font-size:1cm;
+           font-weight:600;
+        }
+        .bottom-left2 {
+           position: absolute;
+           top:370px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.5cm;
+        }
+        .bottom-left3{
+           position: absolute;
+           top:430px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.3cm;
+     }
+     .bottom-left4{
+           position: absolute;
+           top:445px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.3cm;
+     }
+     .pic_style {
+          position:absolute;
+          top:310px;
+          left:20px;
+          height:320px;
+          width:40;
+        }
+        .book {
+     position: absolute;
+	  top: 75%;
+	  left: 80%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: #0078ff;
+	  color: white;
+	  font-size: 12px;
+	  padding: 18px 85px 18px 85px;
+	  border: none;
+                  border-radius:3px;
+	  cursor: pointer;
+	  text-align: center;
+}
+.container .btn {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: transparent;
+      border: none;
+	  padding: 12px 24px;
+	  
+	  cursor: pointer;
+	  
+	}
+    .img {
+  height:80px;
+  width:80px;
+  border-radius:100%;
+}
+tag {
+         margin-top:6%;
+         margin-right:25%;
+         height:70px;
+         width:240px;
+}
+.column {
+  float: left;
+  width: 31.33%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.btn-primary{
+  margin-right:10px; 
+  margin-top:18px;
+  background-color: #0078ff;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #0078ff;
+  border-radius: 6px;
+  font-size: 15px;
+}
+</style>
+</head>
+    <body>
+            <div class="row" style="background-color:#333545;width:100%;">
+                    <div class="column" style="width:15%">
+                      <img src="{% static 'image/logo3.png' %}" width="140px" height="50px" style="margin-left:80px; margin-top:15px;"  >
+                    </div>
+                    <div class="column" style="width:55%;">
+                       <input onclick = "window.location.href='{% url 'search' %}?next={{request.path}}'" type="text" placeholder="  Search Movies,Plays,Events, Sports and Activities" style="margin-top:12px; 
+                              margin-right:200px; width:820px; height:50px;border-color:#333545;border-radius:5px 5px 5px 5px; align:center">
+                       <div class="topnav">
+                         <a href="#">Movies</a>
+                         <a href="#">Plays</a>
+                         <a href="#">Events</a>
+                         <a href="#">Sports</a>
+                         <a href="#">Monuments</a>
+                         <a href="#">Activities</a>
+                         
+                       </div>
+                    </div>
+                    <div class="column" style="width: 30%;">
+                      {% if user.is_authenticated %}
+                            <button type="button" onclick="window.location.href='{% url 'logout' %}'"; class="btn-primary">Logout</button> 
+                    {% else %}
+                  
+                       <button type="button" onclick="window.location.href='{% url 'SignUpView' %}'"; class="btn-primary">Sign Up</button> 
+                       <button type="button" onclick="window.location.href='{% url 'login' %}?next={{request.path}}'"; class="btn-primary">Log In</button>
+                     
+                  {% endif %}
+                  </div>
+            </div>
+            <div>	
+                    <img class="pic2_style" src="{% static 'image/kabirback.png' %}" >
+                    </div>
+                    <div class="down">
+                    <img src="{% static 'image/kabirposter.jpg' %}" class="pic_style">
+                    <p class="bottom-left">Kabir Singh</p>
+<p class="bottom-left2">Hindi </p>
+<p class="bottom-left3">Released: 21 Jun, 2019 </p>
+<p class="bottom-left4">Time:2 hrs 55mins </p>
+                    <img src="{% static 'image/kabirrate.png' %}" style="margin-left:300px; width:370px;">
+                    <button class="book"onclick="window.location.href='{% url 'kabir_tickets'%}' "><b>BOOK TICKETS</b></button>
+                    </div>
+                    <div class="container">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><img src="{% static 'image/play.jpg' %}" style="height: 80px; width: 80px;"></button>
+                          <div class="modal fade" id="myModal" role="dialog"style="margin-top:120px;margin-right:202px;">
+                              <div class="modal-dialog">
+                              <div class="modal-body ">
+                          <button type="button" class="close" style="align:center"data-dismiss="modal">&times;</button>          
+                          <iframe width="800" height="470" src="https://youtu.be/AgX2II9si7w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div></div></div></div>
+                    <br><br><br>
+                    
+                    <div class="row">
+                      <div class="column" style="background-color:#F8F9F9;margin-left:10px;margin-right:10px;">
+                        <h3 style="text-align:center">Cast</h3>
+                         <p><img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/shahid-kapoor-2094-12-09-2017-02-17-55.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/kiara-advani-1043272-24-03-2017-15-39-38.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/arjan-bajwa-15150-24-03-2017-17-50-24.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/aanchal-chauhan-1076632-20-04-2018-07-22-25.jpg"></p>  
+                         <p>Shahid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KiaraAdvani&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArianBawia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AanchalChauhan</p>
+                    <p style="fontsize:13px;">Actor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actor</p>
+                      </div>
+                      <div class="column" style="background-color:#F8F9F9;margin-left:10px;margin-right:10px;">
+                        <h3 style="text-align:center">Synopsis</h3>
+                        <p>A brilliant yet impulsive young surgeon falls into a path of self-destruction after the love of his life is forced to marry another man.</p>
+                      </div>
+                      <div class="column" style="background-color:#F8F9F9;margin-left:10px;">
+                        <h3 style="text-align:center;">Crew</h3>
+                         <p><img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/sandeep-reddy-vanga-1076502-08-08-2017-17-26-44.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/murad-khetani-iein090489-24-07-2017-12-25-24.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/ashwin-varde-iein084663-24-07-2017-12-24-59.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/bhushan-kumar-1075903-24-03-2017-13-42-17.jpg"></p>  
+                         <p>SandeepReddy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Murad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ashwin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BhusanKumar</p>
+                    <p style="fontsize:13px;">Director&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Producer&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;Producer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Producer</p>
+                      </div>
+                    </div>
+        
+
+    </body>
+</html>

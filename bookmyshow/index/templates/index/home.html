@@ -1,0 +1,153 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Movie Tickets, Plays, Sports, Events & Cinemas - BookMyShow 
+</title>
+<link rel = "icon" href = "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/de/b5/f7/deb5f760-e29b-80a0-dd0a-31cb08fa1bdf/AppIcon-1x_U007emarketing-85-220-6.jpeg/246x0w.jpg" width="100" type="image/x-icon">
+    <meta name="viewport" content="width=120px, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      
+        $('#myModal').modal({
+          backdrop: 'static'
+        });
+            $("#myModal").modal('show');
+    });
+    </script>
+
+<style>
+    ul{
+list-style-type: none;
+margin-left:-20px;
+margin-top: 25px;
+}
+ul li{
+display: inline-block;
+}
+ul li a{
+text-decoration: none;
+color:#1AFFDB;
+padding: 14px 16px;
+}
+ul li a:hover{
+background-color:#fff;
+color:#1A5EFF;
+}
+.main{
+max-width:1500px;
+margin-left: 100px;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float:left;
+  padding: 10px;
+  height: 120px;
+  
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333545;
+}
+/* Navbar links */
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 8px 10px;
+  text-decoration: none;
+  font-size: 15px;
+  margin-left:-10px;
+}
+.btn-primary{
+  margin-right:10px; 
+  margin-top:18px;
+  background-color: #0078ff;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #0078ff;
+  border-radius: 6px;
+  font-size: 15px;
+}
+.back {
+background-image:url({% static 'image/back1.png' %});
+height:100vh;
+background-size:cover;
+background-position:center;
+}
+.modal-title {
+    text-align: center;
+}
+.modal-dialog {
+    margin-top: 150px;
+}
+.modal-body {
+  margin-left: 100px;
+}
+</style>
+</head>
+<body class = "back">
+    <div class="bs-example">
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                       
+                        <h4 class="modal-title">Popular Cities </h4>
+                    </div>
+                    <div class="modal-body">
+                <ul>
+                        <li><a href="{% url 'hyd' %}"> <img src="{% static 'image/hyd.png' %}"><figcaption style="font-size:10px; color:black; margin-left:30px;">Hyderabad</figcaption></a></li>
+                        <li><a href="{% url 'delhi' %}"> <img src="{% static 'image/delhi.png' %}"><figcaption style="font-size:10px;color:black;  margin-left:40px;">Delhi</figcaption></a></li>
+                        <li><a href="{% url 'bang' %}"> <img src="{% static 'image/bang.png' %}"><figcaption style="font-size:10px;color:black;  margin-left:45px">Banglore</figcaption></a></li>
+                </ul>
+                            </div>
+        </div>
+    </div>
+</div></div>
+     <div class="row" style="background-color:#333545;width:100%;height: 120px;">
+          <div class="column" style="width:15%">
+            <img src="{% static 'image/logo3.png' %}" width="140px" height="50px" style="margin-left:80px; margin-top:15px;"  >
+          </div>
+          <div class="column" style="width:65%;">
+             <input onclick = "window.location.href='{% url 'search' %}'"; type="text" placeholder="Search Movies,Plays,Events, Sports and Activities" style="margin-top:12px; 
+                    margin-right:200px; width:930px; height:50px;border-color:#333545;border-radius:5px 5px 5px 5px; align:center">
+             <div class="topnav">
+               <a href="#">Movies</a>
+               <a href="#">Plays</a>
+               <a href="#">Events</a>
+               <a href="#">Sports</a>
+               <a href="#">Monuments</a>
+               <a href="#">Activities</a>
+             </div>
+          </div>
+{% if user.is_authenticated %}
+<div class="column">
+          <button type="button" onclick="window.location.href='{% url 'logout' %}'"; class="btn-primary">Logout</button> 
+   </div>
+{% else %}
+<div class="column">
+     <button type="button" onclick="window.location.href='{% url 'SignUpView' %}'"; class="btn-primary">Sign Up</button> 
+     <button type="button" onclick="window.location.href='{% url 'login' %}'"; class="btn-primary">Log In</button>
+   </div>
+{% endif %}
+     </div>
+</div>
+</body>
+        </html>

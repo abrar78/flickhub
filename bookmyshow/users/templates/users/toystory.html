@@ -1,0 +1,222 @@
+{% load  staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Toy story 4 (2019)</title>
+        <link rel = "icon" href = "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/de/b5/f7/deb5f760-e29b-80a0-dd0a-31cb08fa1bdf/AppIcon-1x_U007emarketing-85-220-6.jpeg/246x0w.jpg" width="100" type="image/x-icon">
+<meta name="viewport" content="width=120px, initial-scale=1">
+<meta charset="utf-8">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        
+        /* Create three equal columns that floats next to each other */
+        .column {
+          float:left;
+          padding: 10px;
+          height: 120px;
+         
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        .topnav {
+          overflow: hidden;
+          background-color: #333545;
+        }
+        /* Navbar links */
+        .topnav a {
+          float: left;
+          color: white;
+          text-align: center;
+          padding: 8px 10px;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          margin-left:-10px;
+        }
+        .pic2_style {
+            height: 370px;
+            width : 100%;
+        }
+        .bottom-left {
+           position: absolute;
+           top:300px;
+           left:280px;
+           color:white;
+           font-size:1cm;
+           font-weight:600;
+        }
+        .bottom-left2 {
+           position: absolute;
+           top:370px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.5cm;
+        }
+        .bottom-left3{
+           position: absolute;
+           top:430px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.3cm;
+     }
+     .bottom-left4{
+           position: absolute;
+           top:445px;
+           left:280px;
+           color:white;
+           font-weight:600;
+          font-size:0.3cm;
+     }
+     .pic_style {
+          position:absolute;
+          top:310px;
+          left:20px;
+          height:320px;
+          width:40;
+        }
+        .book {
+     position: absolute;
+	  top: 75%;
+	  left: 80%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: #0078ff;
+	  color: white;
+	  font-size: 12px;
+	  padding: 18px 85px 18px 85px;
+	  border: none;
+                  border-radius:3px;
+	  cursor: pointer;
+	  text-align: center;
+}
+.container .btn {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: transparent;
+      border: none;
+	  padding: 12px 24px;
+	  
+	  cursor: pointer;
+	  
+	}
+    .img {
+  height:80px;
+  width:80px;
+  border-radius:100%;
+}
+
+.column {
+  float: left;
+  width: 31.33%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.btn-primary{
+  margin-right:10px; 
+  margin-top:18px;
+  background-color: #0078ff;
+  height: 35px;
+  width: 80px;
+  color: whitesmoke;
+  border-color: #0078ff;
+  border-radius: 6px;
+  font-size: 15px;
+}
+</style>
+</head>
+    <body>
+            <div class="row" style="background-color:#333545;width:100%;">
+                    <div class="column" style="width:15%">
+                      <img src="{% static 'image/logo3.png' %}" width="140px" height="50px" style="margin-left:80px; margin-top:15px;"  >
+                    </div>
+                    <div class="column" style="width:55%;">
+                       <input onclick = "window.location.href='{% url 'search' %}?next={{request.path}}'" type="text" placeholder="  Search Movies,Plays,Events, Sports and Activities" style="margin-top:12px; 
+                              margin-right:200px; width:820px; height:50px;border-color:#333545;border-radius:5px 5px 5px 5px; align:center">
+                       <div class="topnav">
+                         <a href="#">Movies</a>
+                         <a href="#">Plays</a>
+                         <a href="#">Events</a>
+                         <a href="#">Sports</a>
+                         <a href="#">Monuments</a>
+                         <a href="#">Activities</a>
+                         <a style ="padding-left: 450px;color: grey"href="{% url 'city' %}">Hyderabad</a>
+                       </div>
+                    </div>
+                    <div class="column" style="width: 30%;">
+                      {% if user.is_authenticated %}
+                            <button type="button" onclick="window.location.href='{% url 'logout' %}'"; class="btn-primary">Logout</button> 
+                    {% else %}
+                  
+                       <button type="button" onclick="window.location.href='{% url 'SignUpView' %}'"; class="btn-primary">Sign Up</button> 
+                       <button type="button" onclick="window.location.href='{% url 'login' %}?next={{request.path}}'"; class="btn-primary">Log In</button>
+                     
+                  {% endif %}
+                  </div>
+            </div>
+            <div>	
+                    <img class="pic2_style" src="{% static 'image/backimg.png' %}" >
+                    </div>
+                    <div class="down">
+                    <img src="{% static 'image/poster.png' %}" class="pic_style">
+                    <p class="bottom-left">Toy story 4 </p>
+<p class="bottom-left2">English </p>
+<p class="bottom-left3">Released: 21 Jun </p>
+<p class="bottom-left4">Time:1 hrs 40 mins </p>
+<img src="{% static 'image/toyrate.png' %}" style="margin-left:300px; width:370px;">
+                    <button class="book"onclick="window.location.href='{% url 'toystory_tickets' %}' "><b>BOOK TICKETS</b></button>
+                    </div>
+                    <div class="container">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><img src="{% static 'image/play.jpg' %}" style="height: 80px; width: 80px;"></button>
+                          <div class="modal fade" id="myModal" role="dialog"style="margin-top:120px;margin-right:202px;">
+                              <div class="modal-dialog">
+                              <div class="modal-body ">
+                          <button type="button" class="close" style="align:center"data-dismiss="modal">&times;</button>          
+                          <iframe width="800" height="470" src="https://www.youtube.com/embed/wmiIUN-7qhE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div></div></div></div>
+                    <br><br><br><br><br><br>
+                    <div class="row">
+                        <div class="column" style="background-color:#F8F9F9;margin-left:10px;margin-right:10px;">
+                          <h3 style="text-align:center">Cast</h3>
+                           <p><img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/tom-hanks-2386-24-03-2017-12-31-02.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/tim-allen-2368-20-03-2017-01-15-45.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/joan-cusack-10954-08-05-2017-12-40-16.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/annie-potts-1063331-07-05-2019-01-04-34.jpg"></p>  
+                           <p>Tom Hanks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tim Allen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Joan Cusack&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Annie Potts</p>
+                      <p style="fontsize:13px;">woody&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buzzLighter&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jessie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bo peep</p>
+                        </div>
+                        <div class="column" style="background-color:#F8F9F9;margin-left:10px;margin-right:10px;">
+                          <h3 style="text-align:center">Synopsis</h3>
+                          <p>Woody has always been confident about his place in the world and that his priority is taking care of his kid, whether that`s Andy or Bonnie. But when Bonnie adds a reluctant new toy called "Forky" to her room, a road trip adventure alongside old and new friends will show Woody how big the world can be for a toy.</p>
+                        </div>
+                        <div class="column" style="background-color:#F8F9F9;margin-left:10px;">
+                          <h3 style="text-align:center;">Crew</h3>
+                           <p><img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/josh-cooley-1074405-07-05-2019-02-32-56.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/jonas-rivera-iein073349-07-05-2019-14-36-05.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/mark-nielsen-iein074767-17-06-2019-12-32-15.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/john-lasseter-1034-24-03-2017-12-42-46.jpg"></p>  
+                           <p>Josh cooley&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jones riveria&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mark Nilsien&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jhon Laster</p>
+                      <p style="fontsize:13px;">Director&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Producer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;Producer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer</p>
+                        </div>
+                      </div>
+        
+
+    </body>
+</html>
+ 
